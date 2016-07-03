@@ -1,8 +1,6 @@
 #!/usr/bin/env lua5.3
 
 --[[
-	apt-get install atomicparsley
-	
 	lua5.3 sqltunes.lua
 	
 	UNIX Epoch (time 0) in Julian calendar is
@@ -53,8 +51,8 @@ local isql =
 	end,
 }
 
--- COMMENT OUT to use sqlite3 CLI above (vs native)
-isql = require "nativesqlite"
+-- UNCOMMENT to use native lua sqlite3 library instead of CLI
+-- isql = require "nativesqlite"
 
 -- local dbg = require "tune_debug"
 
@@ -146,6 +144,10 @@ function mytunes(itun_data_dir, src_track_path, dest_path)
 
 	isql.init(db_path, q_tags)
 	
+	if (not Util.DirExists(dest_path)) then
+		Util.MkDir(dest_path)
+	end
+		
 	local fn_t = CollectUntaggedTracks(src_track_path)
 	assertt(fn_t, "table")
 	
@@ -263,20 +265,23 @@ end
 
 ---- MAIN ----------------------------------------------------------------------
 
-local TARGET_PATH
+local narg = #arg
+assert(narg >= 2)
 
-if (arg[1]) then
-	TARGET_PATH = pshell.readlink("-f", arg[1])
+local TARGET_PATH = pshell.readlink("-f", arg[1])
+
+local itun_db_dir = pshell.readlink("-f", arg[2])
+
+local out_path
+
+if (arg[3]) then
+	out_path = pshell.readlink("-f", arg[3])
 else
-	TARGET_PATH = "/media/vm"
+	out_path = pshell.readlink("-f", "./iTunes_2016")
 end
-
-local itun_data_dir = TARGET_PATH .. "/itunes_se/iTunes/"
 
 local src_track_path = TARGET_PATH .. "/itunes_se/Purchases/"
 -- local src_track_path = TARGET_PATH .. "/iTunes_Control/Music"
 
-local dest_path = TARGET_PATH .. "/iTunes_2016"
-	
-mytunes(itun_data_dir, src_track_path, dest_path)
+mytunes(itun_db_dir, src_track_path, out_path)
 
