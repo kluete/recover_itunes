@@ -22,15 +22,7 @@ Recovers each track
 * cover art bitmap
 * modification/purchase date
 
-It will also filter illegal POSIX filenames
-
-
-## Example
-
-Mount your iPhone on Linux via something like [libimobiledevice](http://www.libimobiledevice.org)
-
-
-
+It will handle UTF-8 characters and also filter illegal POSIX filenames
 
 
 ## Motivation
@@ -66,35 +58,20 @@ apt-get install lua5.3 sqlite3 atomicparsley
 ```
 
 
-## Build Configuration
+## Example
 
-* path to JUCE source code (e.g. ~/development/git/JUCE)  
-
-    $(JUCE_DIR)
-
-* to support juce::String, juce::Colour  
-
-    \#define LX_JUCE 1
-
-* for wxWidgets, make sure wx-config is $PATH-accessible as usual
-
-* to support wxString, wxColour  
-
-    \#define LX_WX 1
-
-* to enable off-thread log generation in main.cpp
-
-    \#define LOG_FROM_ASYNC 1
+Mount your iPhone on Linux via something like [libimobiledevice](http://www.libimobiledevice.org) and get device mount root location
 
 
-## Building with CMake
+```shell
+myiosroot=$(mount -t fuse.gvfsd-fuse | cut -d ' ' -f3)"/afc:host="$(ideviceinfo -k UniqueDeviceID)
+
+$LXGIT/recover_itunes/sqltunes.lua itunes_se/Purchases itunes_se/iTunes out
+
+```
 
 
 ## Misc
 
-* I started writing these for a language-teaching software called "Linguamix", which is where the "lx"-prefix came from.
-* source code is formatted with 8-char tabs, not spaces. So there.
-* source files inevitably end wih the comment  
-    // nada mas  
-  ever since I used a macro-assembler that wouldn't flush the disk cache correctly, so on crash my source files would be missing a sector's worth of data.
-* swearwords usually come more naturally to me in French.
+* ffmpeg doesn't handle m4a coverart
+* timestamp delta

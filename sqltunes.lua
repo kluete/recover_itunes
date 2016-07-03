@@ -268,8 +268,7 @@ end
 local narg = #arg
 assert(narg >= 2)
 
-local TARGET_PATH = pshell.readlink("-f", arg[1])
-
+local src_track_path = pshell.readlink("-f", arg[1])
 local itun_db_dir = pshell.readlink("-f", arg[2])
 
 local out_path
@@ -279,9 +278,6 @@ if (arg[3]) then
 else
 	out_path = pshell.readlink("-f", "./iTunes_2016")
 end
-
-local src_track_path = TARGET_PATH .. "/itunes_se/Purchases/"
--- local src_track_path = TARGET_PATH .. "/iTunes_Control/Music"
 
 mytunes(itun_db_dir, src_track_path, out_path)
 
