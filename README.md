@@ -39,21 +39,19 @@ I was compelled to write this code because:
 * I hate the iTunes desktop app and can't use it on Linux anyway
 * audio finderprinting is unreliable
 
-This may also be of interest to you to learn about iTunes' SQLite database.
+This may also be of interest to learn about iTunes' SQLite database.
 
 
 ## Requirements
 
-* Lua 5.3 because its support for 64-bit integers lets you use SQLite indices as-is
-either:
-* a native lsqlite.so dynamic library, built for Lua 5.3
+* [Lua 5.3](http://github.com/lua) because its support for 64-bit integers lets you use SQLite indices as-is
 * the command-line sqlite3 binary
+* OR a native lsqlite.so dynamic library, built for Lua 5.3
 * AtomicParsely to write MP4 meta-tags
 
 On Debian you'd do something like
 
 ```shell
-
 apt-get install lua5.3 sqlite3 atomicparsley
 ```
 
@@ -63,13 +61,14 @@ apt-get install lua5.3 sqlite3 atomicparsley
 Mount your iPhone on Linux via something like [libimobiledevice](http://www.libimobiledevice.org) and get device mount root location
 
 
-```sh
+```shell
 myiosroot=$(mount -t fuse.gvfsd-fuse | cut -d ' ' -f3)"/afc:host="$(ideviceinfo -k UniqueDeviceID)
-$LXGIT/recover_itunes/sqltunes.lua "$myiosroot/Purchases" "$myiosroot/iTunes_Control/iTunes" out
+lua5.3 "$LXGIT/recover_itunes/sqltunes.lua" "$myiosroot/Purchases" "$myiosroot/iTunes_Control/iTunes" out
 ```
 
 
 ## Misc
 
+* to run faster, copy relevat iOS files to you HDD first
 * ffmpeg doesn't handle m4a coverart
 * timestamp delta
