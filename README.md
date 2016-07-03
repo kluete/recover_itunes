@@ -63,11 +63,9 @@ apt-get install lua5.3 sqlite3 atomicparsley
 Mount your iPhone on Linux via something like [libimobiledevice](http://www.libimobiledevice.org) and get device mount root location
 
 
-```shell
+```sh
 myiosroot=$(mount -t fuse.gvfsd-fuse | cut -d ' ' -f3)"/afc:host="$(ideviceinfo -k UniqueDeviceID)
-
-$LXGIT/recover_itunes/sqltunes.lua itunes_se/Purchases itunes_se/iTunes out
-
+$LXGIT/recover_itunes/sqltunes.lua "$myiosroot/Purchases" "$myiosroot/iTunes_Control/iTunes" out
 ```
 
 
