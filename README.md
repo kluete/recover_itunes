@@ -69,6 +69,7 @@ lua5.3 "$LXGIT/recover_itunes/sqltunes.lua" "$myiosroot/Purchases" "$myiosroot/i
 
 ## Misc
 
+* please do shere if you know how to use LuaRocks to build a version-specic Lua lib on a system with multiple Lua versions
 * to run faster, copy relevat iOS files to you HDD first
 * ffmpeg doesn't handle m4a coverart
 * timestamp delta
