@@ -30,15 +30,16 @@ Under iOS, iTunes keeps track meta-data in its own separate database. Audio file
 
 ## Target Audience
 
-This utility may be of interest to:
+This may be of interest to:
 
 * Linux heads on desktop/server
 * who also use iPhone/iPad
 * purchase lots of music on iOS' iTunes store
-* want those tracks to be usable on any platform they see fit -- with their complete meta-data
-* aren't particularly fond of iTunes' desktop app under OSX/Windows
-* find audio fingerprinting not fully reliable
-* anyone curious about iTunes' SQLite database
+* want to enjoy those tracks on any platform they see fit -- with their complete meta-data
+* can't run iTunes on Linux
+* find audio fingerprinting imperfect
+
+As well as anyone curious about SQLite under iTunes.
 
 
 ## Requirements
