@@ -49,7 +49,7 @@ This may also be of interest to learn about iTunes' SQLite database.
 
 On Debian you'd do something like
 
-```shell
+```bash
 apt-get install lua5.3 sqlite3 atomicparsley
 ```
 
