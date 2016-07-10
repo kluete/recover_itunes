@@ -20,7 +20,7 @@ Recovers each track
 * cover art bitmap
 * modification/purchase date
 
-It will handle UTF-8 characters and also filter illegal POSIX filenames
+It will handle UTF-8 characters (including accents) and also filter illegal POSIX filenames
 
 
 ## Motivation
@@ -59,7 +59,7 @@ apt-get install lua5.3 sqlite3 atomicparsley
 Mount your iPhone on Linux via something like [libimobiledevice](http://www.libimobiledevice.org) and get device mount root location
 
 
-```shell
+```bash
 myiosroot=$(mount -t fuse.gvfsd-fuse | cut -d ' ' -f3)"/afc:host="$(ideviceinfo -k UniqueDeviceID)
 lua5.3 recover_itunes/sqltunes.lua "$myiosroot/Purchases" "$myiosroot/iTunes_Control/iTunes" out
 ```
