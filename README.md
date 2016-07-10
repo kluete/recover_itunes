@@ -1,17 +1,17 @@
 # About recover iTunes
 
-This is a small Lua-based utility to recover meta-tags from tracks you have legally purchased on the iTunes store via some iOS device.
+This small Lua-based utility recovers meta-tag data from audio tracks that were legally purchased on the iTunes store via some iOS device.
 
 It will:
 
-* scan a directory of untagged M4A tracks, typically from your iPhone's /Purchases directory
+* scan a directory of untagged M4A tracks, typically from the iPhone's /Purchases directory
 * fetch their meta-data from iTunes' **SQL database**, located at /iTunes_Control/iTunes/MediaLibrary.sqlitedb
-* save a copy of tracks while injecting their meta-data
+* save a copy of each track while injecting its meta-data
 
 
 ## Features
 
-Recovers each track
+Recovers the following meta-data
 
 * title
 * artist
@@ -20,32 +20,33 @@ Recovers each track
 * cover art bitmap
 * modification/purchase date
 
-It will handle UTF-8 characters (including accents) and also filter illegal POSIX filenames
+It will handle UTF8 characters (including accents) and also filter-out illegal POSIX filenames
 
 
-## Motivation
+## Rationale
 
-I was compelled to write this code because:
+Under iOS, iTunes keeps track meta-data in its own separate database. Audio files are devoid of meta-data, with cryptic filenames such as "-49907963407597370.m4a"
 
-* I'm a Linux head (Debian) on desktop & server
-* I also use iPhone/iPad
-* I buy a lot of music on iOS' iTunes store
-* I want those tracks to be usable on any platform I see fit
-* iTunes keeps track meta-data in its own separate database
-  * without it, tracks will be devoid of meta-data
-  * track filenames will be something unhelpful like "-49907963407597370.m4a"
-* I hate the iTunes desktop app and can't use it on Linux anyway
-* audio finderprinting is unreliable
 
-This may also be of interest to learn about iTunes' SQLite database.
+## Target Audience
+
+This utility may be of interest to:
+
+* Linux heads on desktop/server
+* who also use iPhone/iPad
+* purchase lots of music on iOS' iTunes store
+* want those tracks to be usable on any platform they see fit -- with their complete meta-data
+* aren't particularly fond of iTunes' desktop app under OSX/Windows
+* find audio fingerprinting not fully reliable
+* anyone curious about iTunes' SQLite database
 
 
 ## Requirements
 
 * [Lua 5.3](http://github.com/lua) because its 64-bit integers can handle SQLite indices as-is
 * the command-line sqlite3 binary
-* **OR** a native lsqlite.so dynamic library, built for Lua 5.3
-* AtomicParsely to write MP4 meta-tags
+* **OR** a native lsqlite.so dynamic library built for Lua 5.3
+* [AtomicParsely](https://github.com/wez/atomicparsley) to write MP4 meta-tags
 
 On Debian you'd do something like
 
@@ -67,7 +68,7 @@ lua5.3 recover_itunes/sqltunes.lua "$myiosroot/Purchases" "$myiosroot/iTunes_Con
 
 ## Misc
 
-* this program is **read-only** -- it doesn't write *anything* to your phone
+* this program is **read-only** -- no data whatsoever is written to the iPhone
 * please do shere if you know how to use LuaRocks to build a version-specic Lua lib on a system with multiple Lua versions
 * to run faster, copy relevat iOS files to you HDD first
 * ffmpeg/avconv don't seem to handle m4a cover art
