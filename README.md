@@ -55,7 +55,7 @@ On Debian you'd do something like
 
 ## Usage
 
-    sqltunes.lua <in_tracks_dir> <in_itunes_db_dir> <out_dir>
+    sqltunes.lua <in_dir> <itunes_db_dir> <out_dir>
 
 
 
@@ -66,7 +66,7 @@ After having mounted your iPhone on Linux via [libimobiledevice](http://www.libi
     # retrieve mount point
     myiosroot=$(mount -t fuse.gvfsd-fuse | cut -d ' ' -f3)"/afc:host="$(ideviceinfo -k UniqueDeviceID)
     # run
-    lua5.3 recover_itunes/sqltunes.lua "$myiosroot/Purchases" "$myiosroot/iTunes_Control/iTunes" out
+    lua5.3 sqltunes.lua "$myiosroot/Purchases" "$myiosroot/iTunes_Control/iTunes" out
 
 
 
