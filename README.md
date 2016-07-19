@@ -8,7 +8,6 @@ This small Lua-based utility recovers meta-tag data from audio tracks that were 
 * save a copy of each renamed track with its embedded meta-data
 
 
-
 ## Rationale
 
 Under iTunes keeps track meta-data in its own separate database. Audio files are devoid of meta-data, with unhelpful filenames such as "-49907963407597370.m4a"
@@ -24,6 +23,12 @@ This program recovers the following meta-data:
 
 It handles UTF-8 characters (including accents) and filters-out illegal characters in POSIX filenames
 
+
+It'll go from: 
+![before](https://github.com/kluete/doc/bf.png "before")
+
+To:
+![after](https://github.com/kluete/doc/af.png "after")
 
 
 ## Target Audience
