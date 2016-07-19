@@ -66,15 +66,15 @@ After having mounted your iPhone on Linux via [libimobiledevice](http://www.libi
     # retrieve mount point
     myiosroot=$(mount -t fuse.gvfsd-fuse | cut -d ' ' -f3)"/afc:host="$(ideviceinfo -k UniqueDeviceID)
     # run
-    lua5.3 recover_itunes/sqltunes.lua "$myiosroot/Purchases" "$myiosroot/iTunes_Control/iTunes" out
+    lua5.3 sqltunes.lua $myiosroot/Purchases $myiosroot/iTunes_Control/iTunes out
 
 
 
 ## Technical details
 
 * this program is **read-only** -- no data whatsoever is written to the iPhone
-* it is *theoretically* possible to retrieve meta-data from tracks in the global iTunes library (i.e. outside the `/Purchases` directory) but this program isn't designed for it. In a large audio library you're likely to encounter multiple tracks with the same (short) filename, in different sub-directories, which this program doesn't currently handle.
-* reading files directly via FUSE's AFC protocol can be slow. To speed it up, copy relevant iOS files to your HDD first, then process them locally
+* it is possible to retrieve meta-data from tracks in the global iTunes library (i.e. outside the `/Purchases` directory) but this program isn't designed for it. In a large audio library you're likely to encounter multiple tracks with the same (short) filename, in different sub-directories, which this program doesn't currently handle.
+* reading files directly via FUSE's AFC protocol over USB can be slow. To speed it up, copy relevant iOS files to your HDD first, then process them locally
 * there's currently a hardcoded (hackish) 31-year timestamp offset for the purchase date, maybe because the **Julian calendar** starts on 19-December-1969
 * ffmpeg/avconv don't seem to correctly handle m4a cover art
 * a native Lua SQLite library is really only needed for development/debugging. For plain usage, CLI sqlite3 is suffficient
