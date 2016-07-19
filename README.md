@@ -84,7 +84,7 @@ After having mounted your iPhone on Linux via [libimobiledevice](http://www.libi
 ## Fineprint & Cop-out
 
 * although a trigger-happy litigator will no doubt find *something* to sue about, there's no hacking/reverse-engineering/decrypting going on here. iTunes' database is stored in the vanilla, open-source SQLite format and retrieving a track's meta-data comes down to a single `SELECT` statement with a few sub-look-ups.
-* do not try to write modified files back to the iPhone manually; at best they'll be ignored by iTunes, at worst something with break
+* do not try to write modified files back to the iPhone manually; at best iTunes will ignore them, at worst you'll corrupt the database
 * use at your own risk
 * please share any fixes/improvement
 * enjoy!
