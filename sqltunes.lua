@@ -36,7 +36,7 @@ local isql =
 		local stmt_s = m_query .. "'".. shortname .. "'"
 		
 		local res_s = pshell.sqlite3(m_db_path, '"'..stmt_s..'"')
-		assert(res_s)
+		assertf(res_s, "couldn't get tags for %S", shortname)
 		
 		local e = {fn = shortname}
 		
