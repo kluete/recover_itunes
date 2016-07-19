@@ -10,7 +10,7 @@ This small Lua-based utility recovers meta-tag data from audio tracks that were 
 
 ## Rationale
 
-iTunes keeps track meta-data in its own separate database so audio files are not just devoid of meta-data, they'll have unhelpful filenames such as "-49907963407597370.m4a"
+iTunes keeps track meta-data in its own separate database so audio files are not just devoid of any useful information, they'll have unhelpful filenames such as "-49907963407597370.m4a"
 
 This program recovers the following meta-data:
 
