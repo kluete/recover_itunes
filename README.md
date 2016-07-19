@@ -4,7 +4,7 @@ This small Lua-based utility recovers meta-tag data from audio tracks that were 
 
 * scan a directory of untagged M4A tracks, typically from the iPhone's /Purchases directory, mounted via [libimobiledevice](http://www.libimobiledevice.org)
 * fetch their meta-data from iTunes' [SQLite database](http://www.sqlite.org), located at /iTunes_Control/iTunes/MediaLibrary.sqlitedb
-* fetch any covert art from /iTunes_Control/iTunes/Artwork/Originals
+* fetch any cover art from /iTunes_Control/iTunes/Artwork/Originals
 * save a copy of each track while injecting recovered meta-data
 
 
@@ -28,12 +28,10 @@ It handles UTF8 characters (including accents) and filters-out illegal character
 
 This may be of interest to:
 
-* Linux desktop users
-* who also use iPhone/iPad
-* purchase lots of music on iOS' iTunes store
-* want to enjoy those tracks on any platform they see fit -- with their complete meta-data (I use my [own music player](http://www.laufenberg.ch/lxmusic/))
+* Linux desktop users who purchase lots of music on their iOS device's iTunes store
+* want to enjoy those tracks on any platform they see fit (I use my [own music player](http://www.laufenberg.ch/lxmusic/))
 * can't run iTunes on Linux / don't like it on other platforms
-* find audio fingerprinting imperfect
+* find audio fingerprinting lacking
 
 As well as anyone curious about iTunes' SQLite schema.
 
