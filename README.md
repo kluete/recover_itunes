@@ -40,8 +40,8 @@ As well as anyone curious about iTunes' SQLite schema.
 
 * [Lua 5.3](http://github.com/lua) because its 64-bit integers can handle SQLite indices as-is
 * either
-..* the command-line [sqlite3](https://packages.debian.org/jessie/sqlite3) binary
-..* **OR** a native [Lua SQLite](https://github.com/LuaDist2/lsqlite3) dynamic library built for Lua 5.3
+  * the command-line [sqlite3](https://packages.debian.org/jessie/sqlite3) binary
+  * **OR** a native [Lua SQLite](https://github.com/LuaDist2/lsqlite3) dynamic library built for Lua 5.3
 * [AtomicParsely](https://github.com/wez/atomicparsley) to write MP4 meta-tags
 
 On Debian you'd do something like
