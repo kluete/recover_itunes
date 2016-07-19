@@ -64,34 +64,29 @@ function CollectUntaggedTracks(src_track_path)
 	local tracks_t = Util.CollectDirFilenames(src_track_path)
 	assertt(tracks_t, "table")
 	
+	Log.f("collected %d total files", #tracks_t)
+	
 	local fn_t = {}
 	local audio_ext_set = {m4a = true, mp3 = true}
 	local short_to_fpath_t = {}
-	local fn_blacklist_set = {}
 	
 	for _, fpath in ipairs(tracks_t) do
 	
 		local dir, shortname, body, ext = fpath:match("(.*)/(([^.]+)%.(.+))")
 		assertf(ext, "couldn't split path %S", fpath)
 		
-		local ign_f = fn_blacklist_set[shortname]
-		
-		if (audio_ext_set[ext] and not ign_f) then
+		if (audio_ext_set[ext]) then
 			-- check no duplicate
 			if (not short_to_fpath_t[shortname]) then
 				assertf(not short_to_fpath_t[shortname], "duplicate shortname %S", shortname)
 				short_to_fpath_t[shortname] = fpath
-			else
-				fn_blacklist_set[shortname] = true
 			end
 		end
 	end
 	
 	-- sort & exclude blacklisted
 	for shortname, fpath in pairs(short_to_fpath_t) do
-		if (not fn_blacklist_set[shortname]) then
-			table.insert(fn_t, fpath)
-		end
+		table.insert(fn_t, fpath)
 	end
 	
 	table.sort(fn_t)
@@ -148,6 +143,8 @@ function mytunes(itun_data_dir, src_track_path, dest_path)
 		
 	local fn_t = CollectUntaggedTracks(src_track_path)
 	assertt(fn_t, "table")
+	
+	os.exit()
 	
 	local fn_metatags_lut = {}
 	
