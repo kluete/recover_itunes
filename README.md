@@ -25,10 +25,11 @@ It handles UTF-8 characters (including accents) and filters-out illegal characte
 
 
 It'll go from: 
-![before](https://github.com/kluete/doc/bf.png "before")
+![before](https://github.com/kluete/recover_itunes/doc/bf.png "before")
 
 To:
-![after](https://github.com/kluete/doc/af.png "after")
+![after](https://github.com/kluete/recover_itunes/doc/af.png "after")
+
 
 
 ## Target Audience
