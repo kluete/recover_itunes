@@ -3,9 +3,9 @@
 This small Lua-based utility recovers meta-tag data from audio tracks that were legally purchased on the iTunes store. It will:
 
 * scan a directory of untagged M4A tracks, typically from the iPhone's /Purchases directory, mounted via [libimobiledevice](http://www.libimobiledevice.org)
-* fetch their meta-data from iTunes' [SQLite database](http://www.sqlite.org), located at /iTunes_Control/iTunes/MediaLibrary.sqlitedb
-* fetch any cover art from /iTunes_Control/iTunes/Artwork/Originals
-* save a copy of each track while injecting recovered meta-data
+* fetch their meta-data from iTunes' [SQLite](http://www.sqlite.org) database, located at /iTunes_Control/iTunes/MediaLibrary.sqlitedb
+* fetch any cover art from /iTunes_Control/iTunes/Artwork/Originals/
+* save a copy of each (renamed) track with their meta-data
 
 
 ## Rationale
@@ -21,7 +21,7 @@ This program recovers the following meta-data:
 * cover art bitmap
 * modification/purchase date
 
-It handles UTF8 characters (including accents) and filters-out illegal characters in POSIX filenames
+It handles UTF-8 characters (including accents) and filters-out illegal characters in POSIX filenames
 
 
 ## Target Audience
@@ -39,8 +39,9 @@ As well as anyone curious about iTunes' SQLite schema.
 ## Requirements
 
 * [Lua 5.3](http://github.com/lua) because its 64-bit integers can handle SQLite indices as-is
-* the command-line [sqlite3](https://packages.debian.org/jessie/sqlite3) binary
-* **OR** a native [Lua SQLite](https://github.com/LuaDist2/lsqlite3) dynamic library built for Lua 5.3
+* either
+..* the command-line [sqlite3](https://packages.debian.org/jessie/sqlite3) binary
+..* **OR** a native [Lua SQLite](https://github.com/LuaDist2/lsqlite3) dynamic library built for Lua 5.3
 * [AtomicParsely](https://github.com/wez/atomicparsley) to write MP4 meta-tags
 
 On Debian you'd do something like
@@ -50,7 +51,7 @@ apt-get install lua5.3 sqlite3 atomicparsley
 ```
 
 
-## Syntax
+## Command Syntax
 
 ```bash
 sqltunes.lua <in_tracks_dir> <in_itunes_db_dir> <out_dir>
