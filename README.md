@@ -24,7 +24,7 @@ This program recovers the following meta-data:
 It handles UTF-8 characters (including accents) and filters-out illegal characters in POSIX filenames
 
 
-F.ex., Clementine go from something like:
+F.ex., [Clementine](https://www.clementine-player.org/) will go from something like:
 ![before](https://github.com/kluete/recover_itunes/blob/master/doc/bf.png "before")
 
 To:
