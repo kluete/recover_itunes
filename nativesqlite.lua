@@ -74,7 +74,7 @@ function get_tags(shortname)
 	Log.f("fetch %S", shortname)
 	
 	local n = fname_exists(shortname)
-	assertf(1 == n, "illegal 3 shortnames (%d)", n)
+	assertf(1 == n, "illegal fname_exists(%S) = %d (expected 1)", shortname, n)
 		
 	--[[
 	local test_s = get_test(shortname)
