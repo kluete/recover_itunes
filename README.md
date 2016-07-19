@@ -24,7 +24,7 @@ This program recovers the following meta-data:
 It handles UTF-8 characters (including accents) and filters-out illegal characters in POSIX filenames
 
 
-It'll go from: 
+F.ex., Clementine go from something like:
 ![before](https://github.com/kluete/recover_itunes/blob/master/doc/bf.png "before")
 
 To:
@@ -90,9 +90,10 @@ After having mounted your iPhone on Linux via [libimobiledevice](http://www.libi
 
 ## Fineprint & Cop-out
 
-* although a trigger-happy litigator will no doubt find *something* to sue about, there's no hacking/reverse-engineering/decrypting going on here. iTunes' database is stored in the vanilla, open-source SQLite format and retrieving a track's meta-data comes down to a single `SELECT` statement with a few sub-look-ups.
-* do not try to write modified files back to the iPhone manually; at best iTunes will ignore them, at worst you'll corrupt the database
-* iTunes stores all sorts of data inside audio tracks, with some debate about stand-compliance; no attemp is made here to address those issues 
+* although a trigger-happy litigator will no doubt find *something* to sue about, there's no hacking/reverse-engineering/decrypting going on here. iTunes' database is stored in the vanilla, open-source SQLite format and retrieving a track's meta-data comes down to a single `SELECT` statement with a few sub-lookups.
+* do not try to write modified files back to iOS manually; at best iTunes will ignore them, at worst you'll corrupt the database
+* if your desktop audio player is iTunes anyway, stick to it
+* iTunes stores all sorts of data inside audio tracks, with some debate about standard-compliance; no attempt is made here to address those issues 
 * use at your own risk
 * please share any fixes/improvement
 * enjoy!
