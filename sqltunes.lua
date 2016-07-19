@@ -52,9 +52,9 @@ local isql =
 }
 
 -- UNCOMMENT to use native lua sqlite3 library instead of CLI
--- isql = require "nativesqlite"
+isql = require "nativesqlite"
 
--- local dbg = require "tune_debug"
+local dbg = require "tune_debug"
 
 ---- Collect Untagged Tracks ---------------------------------------------------
 
