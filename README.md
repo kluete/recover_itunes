@@ -50,12 +50,21 @@ apt-get install lua5.3 sqlite3 atomicparsley
 ```
 
 
-## Example
-
-Mount your iPhone on Linux via something like [libimobiledevice](http://www.libimobiledevice.org), then:
+## Syntax
 
 ```bash
+sqltunes.lua <in_tracks_dir> <in_itunes_db_dir> <out_dir>
+```
+
+
+## Example
+
+After having mounted your iPhone on Linux via [libimobiledevice](http://www.libimobiledevice.org):
+
+```bash
+# retrieve mount point
 myiosroot=$(mount -t fuse.gvfsd-fuse | cut -d ' ' -f3)"/afc:host="$(ideviceinfo -k UniqueDeviceID)
+# process
 lua5.3 recover_itunes/sqltunes.lua "$myiosroot/Purchases" "$myiosroot/iTunes_Control/iTunes" out
 ```
 
