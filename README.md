@@ -1,6 +1,6 @@
 # About recover iTunes
 
-This small Lua-based utility recovers meta-tag data from audio tracks that were legally purchased on the iTunes store via some iOS device. It will:
+This small Lua-based utility recovers meta-tag data from audio tracks that were legally purchased on the iTunes store. It will:
 
 * scan a directory of untagged M4A tracks, typically from the iPhone's /Purchases directory, mounted via [libimobiledevice](http://www.libimobiledevice.org)
 * fetch their meta-data from iTunes' [SQLite database](http://www.sqlite.org), located at /iTunes_Control/iTunes/MediaLibrary.sqlitedb
