@@ -78,13 +78,14 @@ function CollectUntaggedTracks(src_track_path)
 		if (audio_ext_set[ext]) then
 			-- check no duplicate
 			if (not short_to_fpath_t[shortname]) then
-				assertf(not short_to_fpath_t[shortname], "duplicate shortname %S", shortname)
 				short_to_fpath_t[shortname] = fpath
+			else
+				Log.f(" ignoring duplicate shortname for %S", fpath)
 			end
 		end
 	end
 	
-	-- sort & exclude blacklisted
+	-- sort
 	for shortname, fpath in pairs(short_to_fpath_t) do
 		table.insert(fn_t, fpath)
 	end
@@ -143,8 +144,6 @@ function mytunes(itun_data_dir, src_track_path, dest_path)
 		
 	local fn_t = CollectUntaggedTracks(src_track_path)
 	assertt(fn_t, "table")
-	
-	os.exit()
 	
 	local fn_metatags_lut = {}
 	
