@@ -75,13 +75,6 @@ function get_tags(shortname)
 	
 	local n = fname_exists(shortname)
 	assertf(1 == n, "illegal 3 shortnames (%d)", n)
-		
-	--[[
-	local test_s = get_test(shortname)
-	if (not test_s) then
-		-- return {title = shortname, date_modified = 0, track_n = 0, artist = "_NO_ARTIST", album = "nil", album_artist = "nil", base_path = "caca"}
-	end
-	]]
 	
 	local stmt = db:prepare(query .. '?')
 	assert(stmt)

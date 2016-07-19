@@ -18,8 +18,6 @@ printf("lua args(%d):", n_args)
 for k, v in pairs(arg) do
 	print(("arg[%d] = %s"):format(k, v))
 end
-
-print("\n\n\n")
 ]]
 
 -- sprintf
@@ -76,24 +74,6 @@ function errorf(fmt, ...)
 	error(sprintf(fmt, ...), 1)
 end
 
---[[
-function printt(fmt, ...)
-	
-	assert(type(fmt) == "string")
-	
-	local t = {...}
-	assert(type(t) == "table")
-
-	local res_t = {}
-	
-	for _, v in ipairs(t) do
-		res_t[v] = true
-	end
-
-	return res_t
-end
-]]
-
 -- exec
 shell = {}
 setmetatable(shell, {__index =
@@ -120,10 +100,8 @@ setmetatable(bshell, {__index =
 pshell = {}
 setmetatable(pshell, {__index =
 	function(t, func)
-		-- print(("_lut %s()"):format(tostring(func)))
 		local shell_fn = func.." "
 		return	function (...)
-			-- return shell_fn..table.concat({...}," ")
 			return io.popen(shell_fn..table.concat({...}," ")):read("*l")
 		end
 	end})
@@ -152,7 +130,6 @@ setmetatable(tshell, {__index =
 fshell = {}
 setmetatable(fshell, {__index =
 	function(t, func)
-		-- print(("_lut %s()"):format(tostring(func)))
 		local shell_fn = func.." "
 		if (func == "_") then
 			shell_fn = ""
@@ -268,7 +245,6 @@ end
 term = {}
 setmetatable(term, {__index =
 	function(t, func_s)
-		-- print(("_lut %s()"):format(tostring(func)))
 		assertf(type(func_s) == "string", "term func is not string")
 		local arg_f = func_s
 		-- local prefix_s = "\x1b["		-- this hex DOESN'T WORK on Lua 5.1
@@ -810,12 +786,3 @@ function Util.WriteFile(fn, f_s)
 	printf("   wrote %d chars", #f_s)
 end
 
---[[
---- Set File Modification Time
-function SetFileModTime(fpath, mod_time, access_time)
-
-	local res, err_s = posix.utime(fpath, mod_time, access_time)
-	-- returns zero on success, nil on error (dicey)
-	assertf(res, "posix.utime(%S) error %S", fpath, err_s)
-end
-]]

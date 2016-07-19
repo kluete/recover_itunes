@@ -54,8 +54,6 @@ local isql =
 -- UNCOMMENT to use native lua sqlite3 library instead of CLI
 -- isql = require "nativesqlite"
 
--- local dbg = require "tune_debug"
-
 ---- Collect Untagged Tracks ---------------------------------------------------
 
 local
@@ -76,7 +74,7 @@ function CollectUntaggedTracks(src_track_path)
 		local dir, shortname, body, ext = fpath:match("(.*)/(([^.]+)%.(.+))")
 		assertf(ext, "couldn't split path %S", fpath)
 		
-		local ign_f = fn_blacklist_set[shortname]	-- or (dbg.EXCLUDED and (body ~= dbg.EXCLUDED))
+		local ign_f = fn_blacklist_set[shortname]
 		
 		if (audio_ext_set[ext] and not ign_f) then
 			-- check no duplicate
@@ -150,16 +148,6 @@ function mytunes(itun_data_dir, src_track_path, dest_path)
 		
 	local fn_t = CollectUntaggedTracks(src_track_path)
 	assertt(fn_t, "table")
-	
-	--[[
-	
-	do
-		-- local e = isqlite.get_tags('-53499112272377379.m4a')
-		local e = get_tags('IBIK.mp3')
-		DumpTable("TEST", e)
-		os.exit()
-	end
-	]]
 	
 	local fn_metatags_lut = {}
 	

@@ -31,7 +31,7 @@ It handles UTF-8 characters (including accents) and filters-out illegal characte
 This may be of interest to:
 
 * Linux desktop users who purchase lots of music on their iOS device's iTunes store
-* want to enjoy those tracks on any platform they see fit (I use my [own music player](http://www.laufenberg.ch/lxmusic/))
+* want to enjoy those tracks on any platform they see fit (f.ex. I use my [own music player](http://www.laufenberg.ch/lxmusic/) on Debian/Xfce)
 * can't run iTunes on Linux or don't like it on other platforms
 * find audio fingerprinting lacking
 
@@ -55,7 +55,7 @@ On Debian you'd do something like
 
 ## Usage
 
-    sqltunes.lua <in_tracks_dir> <in_itunes_db_dir> <out_dir>
+    sqltunes.lua <in_dir> <itunes_db_dir> <out_dir>
 
 
 
