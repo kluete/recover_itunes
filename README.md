@@ -46,44 +46,39 @@ As well as anyone curious about iTunes' SQLite schema.
 
 On Debian you'd do something like
 
-```bash
-apt-get install lua5.3 sqlite3 atomicparsley
-```
+    apt-get install lua5.3 sqlite3 atomicparsley
 
 
-## Command Syntax
+## Usage
 
-```bash
-sqltunes.lua <in_tracks_dir> <in_itunes_db_dir> <out_dir>
-```
+    sqltunes.lua <in_tracks_dir> <in_itunes_db_dir> <out_dir>
+
 
 
 ## Example
 
 After having mounted your iPhone on Linux via [libimobiledevice](http://www.libimobiledevice.org):
 
-```bash
-# retrieve mount point
-myiosroot=$(mount -t fuse.gvfsd-fuse | cut -d ' ' -f3)"/afc:host="$(ideviceinfo -k UniqueDeviceID)
-# process
-lua5.3 recover_itunes/sqltunes.lua "$myiosroot/Purchases" "$myiosroot/iTunes_Control/iTunes" out
-```
+    # retrieve mount point
+    myiosroot=$(mount -t fuse.gvfsd-fuse | cut -d ' ' -f3)"/afc:host="$(ideviceinfo -k UniqueDeviceID)
+    # run
+    lua5.3 recover_itunes/sqltunes.lua "$myiosroot/Purchases" "$myiosroot/iTunes_Control/iTunes" out
+
+
+## Technical details
+
+* this program is **read-only** -- no data whatsoever is written to the iPhone
+* it is *theoretically* possible to retrieve meta-data from tracks in the global iTunes library (i.e. outside the /Purchases directory) but this program isn't designed for it. In a large audio library you're likely to encounter multiple tracks with the same (short) filename, in different sub-directories, which this program doesn't currently handle.
+* reading files directly via FUSE's AFC protocol can be slow. To speed it up, copy relevant iOS files to your HDD first, then process them locally
+* there's currently a hardcoded (hackish) 31-year timestamp offset for the purchase date, maybe because the **Julian calendar** starts on 19-December-1969
+* ffmpeg/avconv don't seem to correctly handle m4a cover art
 
 
 ## Fineprint & Cop-out
 
-* although trigger-happy litigators will no doubt find *something* to sue about, there's no hacking/reverse-engineering/decrypting going on here. iTunes' database is in standard, open-source SQLite format and retrieving a track's meta-data comes down to a single SELECT statement with a few sub-look-ups.
-* this program is **read-only** -- no data whatsoever is written to the iPhone
+* although a trigger-happy litigator will no doubt find *something* to sue about, there's no hacking/reverse-engineering/decrypting going on here. iTunes' database is in standard, open-source SQLite format and retrieving a track's meta-data comes down to a single SELECT statement with a few sub-look-ups.
 * do not try to write modified files back to the iPhone manually; at best they'll be ignored by iTunes, at worst something with break
-* it is *theoretically* possible to retrieve meta-data from tracks in the global iTunes library (i.e. outside the /Purchases directory) but this program isn't designed for it. In a large audio library you're likely to encounter multiple tracks with the same (short) filename, in different sub-directories, which this program doesn't currently handle.
 * use at your own risk
 * please share any fixes/improvement
 * enjoy!
-
-
-## Notes
-
-* reading files directly via FUSE's AFC protocol can be slow. To speed it up, copy relevant iOS files to your HDD first, then process them locally
-* there's currently a hardcoded (hackish) 31-year timestamp offset for the purchase date, maybe because the **Julian calendar** starts on 19-December-1969
-* ffmpeg/avconv don't seem to correctly handle m4a cover art
 
