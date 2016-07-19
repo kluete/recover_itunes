@@ -8,6 +8,7 @@ This small Lua-based utility recovers meta-tag data from audio tracks that were 
 * save a copy of each renamed track with its embedded meta-data
 
 
+
 ## Rationale
 
 Under iTunes keeps track meta-data in its own separate database. Audio files are devoid of meta-data, with unhelpful filenames such as "-49907963407597370.m4a"
@@ -24,6 +25,7 @@ This program recovers the following meta-data:
 It handles UTF-8 characters (including accents) and filters-out illegal characters in POSIX filenames
 
 
+
 ## Target Audience
 
 This may be of interest to:
@@ -34,6 +36,7 @@ This may be of interest to:
 * find audio fingerprinting lacking
 
 As well as anyone curious about iTunes' SQLite schema.
+
 
 
 ## Requirements
@@ -47,6 +50,7 @@ As well as anyone curious about iTunes' SQLite schema.
 On Debian you'd do something like
 
     apt-get install lua5.3 sqlite3 atomicparsley
+
 
 
 ## Usage
@@ -65,6 +69,7 @@ After having mounted your iPhone on Linux via [libimobiledevice](http://www.libi
     lua5.3 recover_itunes/sqltunes.lua "$myiosroot/Purchases" "$myiosroot/iTunes_Control/iTunes" out
 
 
+
 ## Technical details
 
 * this program is **read-only** -- no data whatsoever is written to the iPhone
@@ -72,6 +77,8 @@ After having mounted your iPhone on Linux via [libimobiledevice](http://www.libi
 * reading files directly via FUSE's AFC protocol can be slow. To speed it up, copy relevant iOS files to your HDD first, then process them locally
 * there's currently a hardcoded (hackish) 31-year timestamp offset for the purchase date, maybe because the **Julian calendar** starts on 19-December-1969
 * ffmpeg/avconv don't seem to correctly handle m4a cover art
+* a native Lua SQLite library is really only needed for development/debugging. For plain usage, CLI sqlite3 is suffficient
+
 
 
 ## Fineprint & Cop-out
