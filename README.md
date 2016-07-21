@@ -36,10 +36,10 @@ To:
 
 This may be of interest to:
 
-* Linux desktop users who purchase a lot of music via their iOS device's iTunes store
+* Linux desktop users who purchase music via their iOS device's iTunes store
 * want to enjoy those tracks on any platform they see fit (f.ex. I use my [own music player](http://www.laufenberg.ch/lxmusic/) on Debian/Xfce)
 * can't run iTunes on Linux or don't like running it on other platforms
-* find audio fingerprinting lacking
+* find audio fingerprinting lacking, especially for more underground artists
 
 As well as anyone curious about iTunes' SQLite schema.
 
@@ -90,7 +90,7 @@ After having mounted your iPhone on Linux via [libimobiledevice](http://www.libi
 
 ## Fineprint & Cop-out
 
-* although a trigger-happy lawyer will no doubt find *something* to scream bloody murder about, there's no hacking/reverse-engineering/decrypting going on here. iTunes' database is stored in the vanilla, open-source SQLite format and retrieving a track's meta-data comes down to a single, albeit tortuous, `SELECT` statement.
+* although a trigger-happy lawyer will no doubt find *something* to scream bloody murder about, there's no real hacking going on here. iTunes' database is stored in the vanilla, open-source SQLite format and retrieving a track's meta-data comes down to a single, albeit tortuous, `SELECT` statement.
 * do not try to write modified files back to iOS manually; at best iTunes will ignore them, at worst you'll corrupt the database
 * if your desktop audio player is iTunes anyway, stick to it
 * iTunes stores all sorts of data inside audio files, with some debate about standard-compliance; no attempt is made here to address those issues 
