@@ -39,6 +39,7 @@ This may be of interest to:
 * Linux desktop users who purchase music via their iOS device's iTunes store
 * want to enjoy those tracks on any platform they see fit (f.ex. I use my [own music player](http://www.laufenberg.ch/lxmusic/) on Debian/Xfce)
 * can't run iTunes on Linux or don't like running it on other platforms
+* like to mitigate iTunes' instability wrt library zaps
 * find audio fingerprinting lacking, especially for more underground artists
 
 As well as anyone curious about iTunes' SQLite schema.
