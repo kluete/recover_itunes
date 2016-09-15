@@ -91,7 +91,7 @@ After having mounted your iPhone on Linux via [libimobiledevice](http://www.libi
 
 ## Fineprint & Cop-out
 
-* although a trigger-happy lawyer will no doubt find *something* to scream bloody murder about, there's no real hacking going on here. iTunes' database is stored in the vanilla, open-source SQLite format and retrieving a track's meta-data comes down to a single, albeit tortuous, `SELECT` statement.
+* although a trigger-happy lawyer will no doubt find *something* to scream bloody murder about, there's no real hacking going on here. iTunes' database is stored in the vanilla, open-source SQLite format and retrieving a track's meta-data comes down to a single, albeit tortuous, `SELECT` statement (this cop-out kind of moot after publication in [Hackaday.com] (http://hackaday.com/2016/07/21/ever-buy-music-from-apple-use-linux-you-need-this-tool/))
 * do not try to write modified files back to iOS manually; at best iTunes will ignore them, at worst you'll corrupt the database
 * if your desktop audio player is iTunes anyway, stick to it
 * iTunes stores all sorts of data inside audio files, with some debate about standard-compliance; no attempt is made here to address those issues 
