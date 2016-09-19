@@ -7,7 +7,7 @@ This small Lua-based utility recovers meta-tag data from audio tracks that were 
 * fetch any cover art from `/iTunes_Control/iTunes/Artwork/Originals/`
 * save a copy of each renamed track with its embedded meta-data
 
-It was designed for Linux.
+It was designed for Linux and tested on Debian.
 
 
 ## Rationale
